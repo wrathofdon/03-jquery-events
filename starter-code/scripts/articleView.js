@@ -89,7 +89,7 @@ articleView.setTeasers = function() {
   $('article').on('click', '.read-on', function(e) {
     e.preventDefault();
     if ($(this).html() === 'Read on') {
-      $(this).parent().find('*').fadeIn();
+      $('.article-body *:nth-of-type(n+2)').fadeIn();
       $(this).html('Show Less');
     }else {
       $('body').animate({
