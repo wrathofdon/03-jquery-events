@@ -88,11 +88,19 @@ articleView.setTeasers = function() {
   //       process any .read-on clicks that happen within child nodes.
   $('article').on('click', '.read-on', function(e) {
     e.preventDefault();
-    $(this).parent().find('*:nth-of-type(n+2)').show();
+    if ($(this).html() === 'Read on') {
+      $(this).parent().find('*').fadeIn();
+      $(this).html('Show Less');
+    }else {
+      $('body').animate({
+        scrollTop: ($(this).parent().offset().top)
+      },1000);
+      $(this).html('Read on');
+      $(this).parent().find('.article-body *:nth-of-type(n+2)').fadeOut();
+    }
   })
   // STRETCH GOAl!: change the 'Read On' link to 'Show Less'
-
-  // $('article[data-author="' + this.value + '"]').show();
+  // Done
 };
 
 // TODO: Call all of the above functions, once we are sure the DOM is ready.
