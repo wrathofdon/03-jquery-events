@@ -41,7 +41,7 @@ articleView.handleAuthorFilter = function() {
       //       and then show just the ones that match for the author that was selected.
       //       Use an "attribute selector" to find those articles, and fade them in for the reader.
       $('article').hide();
-      $('article[data-author]"' + $(this).val() + '"]').show();
+      $('article[data-author="' + this.value + '"]').show();
 
     } else {
       // TODO: If the select box was changed to an option that is blank, we should
@@ -56,11 +56,7 @@ articleView.handleCategoryFilter = function() {
   $('#category-filter').on('change', function() {
     if ($(this).val()) {
       $('article').hide();
-      console.log(this.value);
-      
-      $(this).val().attr('data-category').show();
-
-
+      $('article[data-category="' + this.value + '"]').show();
     } else {
       $('article').show();
     }
@@ -90,12 +86,13 @@ articleView.setTeasers = function() {
   //       "Read On" link once it has been clicked. Be sure to prevent the default link-click action!
   //       Ideally, we'd attach this as just 1 event handler on the #articles section, and let it
   //       process any .read-on clicks that happen within child nodes.
-  $('article').on('click', 'a.read-on', function() {
-    $(this).parent().children('.article-body').show();
-    $(this).hide();
+  $('article').on('click', '.read-on', function(e) {
+    e.preventDefault();
+    $(this).parent().find('*:nth-of-type(n+2)').show();
   })
   // STRETCH GOAl!: change the 'Read On' link to 'Show Less'
 
+  // $('article[data-author="' + this.value + '"]').show();
 };
 
 // TODO: Call all of the above functions, once we are sure the DOM is ready.
