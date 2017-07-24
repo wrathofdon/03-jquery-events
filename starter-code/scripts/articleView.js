@@ -92,7 +92,6 @@ articleView.setTeasers = function() {
   })
   // STRETCH GOAl!: change the 'Read On' link to 'Show Less'
 
-  // $('article[data-author="' + this.value + '"]').show();
 };
 
 // TODO: Call all of the above functions, once we are sure the DOM is ready.
